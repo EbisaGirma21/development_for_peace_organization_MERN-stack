@@ -9,7 +9,9 @@ exports.createStory = async (req, res) => {
     const newStory = new Story({
       title: req.body.title,
       description: req.body.description,
-      date: req.body.date,
+      impact: req.body.impact,
+      sector: req.body.sector,
+      location: req.body.location,
       image,
     });
     const savedStory = await newStory.save();
@@ -43,7 +45,7 @@ exports.getStoryById = async (req, res) => {
 // Update a story
 exports.updateStory = async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title, description, impact, sector, location } = req.body;
 
     const story = await Story.findById(req.params.id);
     if (!story) return res.status(404).json({ error: "Story not found" });
@@ -64,6 +66,9 @@ exports.updateStory = async (req, res) => {
         $set: {
           title,
           description,
+          impact,
+          sector,
+          location,
           ...(req.file && { image: req.file.path }),
         },
       },

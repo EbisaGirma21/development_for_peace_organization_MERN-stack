@@ -1,8 +1,9 @@
-// models/ProgramModel.js
+// models/MessageModel.js
 const mongoose = require("mongoose");
 
-const ProgramSchema = new mongoose.Schema(
+const MessageSchema = new mongoose.Schema(
   {
+    title: { type: String, required: true },
     name: { type: String, required: true },
     description: { type: String, required: true },
     image: { type: String },
@@ -12,4 +13,4 @@ const ProgramSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Program", ProgramSchema);
+module.exports = mongoose.model("Message", MessageSchema);

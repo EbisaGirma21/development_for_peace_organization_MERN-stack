@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const newsController = require("../controllers/NewsController");
-const { uploadNews } = require("../middleware/uplooad");
+const { uploadNews } = require("../middleware/upload");
 const requireAuth = require("../middleware/requireAuth");
 
 // Create News with multiple images

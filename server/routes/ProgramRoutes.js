@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const programController = require("../controllers/ProgramController");
-const { uploadProgram } = require("../middleware/uplooad");
+const { uploadProgram } = require("../middleware/upload");
 const requireAuth = require("../middleware/requireAuth");
 
 // Create a new program

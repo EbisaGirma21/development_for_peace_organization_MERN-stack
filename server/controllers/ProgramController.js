@@ -6,14 +6,10 @@ const path = require("path");
 // Create a new program
 exports.createProgram = async (req, res) => {
   try {
-    const { name, category, sub_category, accomplishment, description } =
-      req.body;
+    const { name, description } = req.body;
 
     const program = new Program({
       name,
-      category,
-      sub_category,
-      accomplishment,
       description,
       image: req.file ? req.file.path : null,
     });
@@ -49,8 +45,7 @@ exports.getProgramById = async (req, res) => {
 
 exports.updateProgram = async (req, res) => {
   try {
-    const { name, category, sub_category, accomplishment, description } =
-      req.body;
+    const { name, description } = req.body;
 
     const program = await Program.findById(req.params.id);
     if (!program) return res.status(404).json({ error: "Program not found" });
@@ -70,9 +65,6 @@ exports.updateProgram = async (req, res) => {
       {
         $set: {
           name,
-          category,
-          sub_category,
-          accomplishment,
           description,
           ...(req.file && { image: req.file.path }),
         },
